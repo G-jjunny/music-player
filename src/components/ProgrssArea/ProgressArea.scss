@@ -16,6 +16,9 @@
     span {
       font-size: 15px;
     }
+    .currentTime {
+      color: $green;
+    }
   }
 
   .progress-bar {
@@ -23,6 +26,6 @@
     width: 0%;
     position: relative;
     border-radius: inherit;
-    background: $blue;
+    background: $green;
   }
 }

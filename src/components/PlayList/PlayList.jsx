@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import QueueMusic from "@mui/icons-material/QueueMusic";
 import Close from "@mui/icons-material/Close";
 import PlayListItem from "./PlayListItem";
@@ -37,6 +37,7 @@ const PlayList = ({ showPlayList, setshowPlayList }) => {
           <span>Play list</span>
         </div>
         <Close
+          className="close"
           sx={{ fontSize: 22, cursor: "pointer" }}
           onClick={onClickClose}
         />
@@ -51,4 +52,4 @@ const PlayList = ({ showPlayList, setshowPlayList }) => {
   );
 };
 
-export default PlayList;
+export default memo(PlayList);

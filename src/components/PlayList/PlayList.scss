@@ -25,6 +25,9 @@
     opacity: 1;
     pointer-events: auto;
   }
+  .close:hover {
+    color: $green;
+  }
 
   .header .row {
     display: flex;
@@ -77,6 +80,9 @@
       .music-duration.playing {
         color: $green;
       }
+    }
+    li:hover {
+      background-color: #111;
     }
   }
 }

@@ -1,10 +1,24 @@
 @import "./variables.scss";
-.container {
-  width: 500px;
-  padding: 25px 30px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 15px;
-  border: 2px solid $white;
-  background-color: #2c2a29;
+.App {
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  display: flex;
+  .blur {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+  }
+  .container {
+    margin: auto;
+    width: 500px;
+    padding: 25px 30px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+    border: 2px solid $white;
+    background-color: #2c2a29;
+  }
 }

@@ -1,5 +1,6 @@
 import React, {
   forwardRef,
+  memo,
   useCallback,
   useImperativeHandle,
   useRef,
@@ -44,37 +45,40 @@ function ProgressArea(props, ref) {
     },
   }));
 
-  const onPlay = () => {
+  const onPlay = useCallback(() => {
     dispatch(playMusic()); //재생
-  };
+  }, [dispatch]);
 
-  const getTime = (time) => {
+  const getTime = useCallback((time) => {
     const minute = `0${parseInt(time / 60, 10)}`;
     const seconds = `0${parseInt(time % 60)}`;
     return `${minute}:${seconds.slice(-2)}`;
-  };
+  }, []);
 
   // progress 클릭시 해당 구간으로 이동
-  const onClickProgress = (event) => {
+  const onClickProgress = useCallback((event) => {
     const progressWidth = event.currentTarget.clientWidth;
     const offsetX = event.nativeEvent.offsetX;
     const duration = audio.current.duration;
     audio.current.currentTime = (offsetX / progressWidth) * duration;
-  };
+  }, []);
 
-  const onTimeUpdate = (event) => {
-    if (event.target.readyState === 0) return;
-    const currentTime = event.target.currentTime;
-    const duration = event.target.duration;
-    const progressBarWidth = (currentTime / duration) * 100;
-    progressBar.current.style.width = `${progressBarWidth}%`;
-    setcurrentTime(getTime(currentTime));
-    setduration(getTime(duration));
-  };
+  const onTimeUpdate = useCallback(
+    (event) => {
+      if (event.target.readyState === 0) return;
+      const currentTime = event.target.currentTime;
+      const duration = event.target.duration;
+      const progressBarWidth = (currentTime / duration) * 100;
+      progressBar.current.style.width = `${progressBarWidth}%`;
+      setcurrentTime(getTime(currentTime));
+      setduration(getTime(duration));
+    },
+    [getTime]
+  );
 
-  const onPause = () => {
+  const onPause = useCallback(() => {
     dispatch(stopMusic()); //일시정지
-  };
+  }, [dispatch]);
   const onEnded = useCallback(() => {
     if (repeat === "ONE") {
       // repeat모드가 ONE일때
@@ -99,11 +103,11 @@ function ProgressArea(props, ref) {
         ></audio>
       </div>
       <div className="music-timer">
-        <span>{currentTime}</span>
+        <span className="currentTime">{currentTime}</span>
         <span>{duration}</span>
       </div>
     </div>
   );
 }
 
-export default forwardRef(ProgressArea);
+export default memo(forwardRef(ProgressArea));

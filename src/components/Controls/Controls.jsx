@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { memo, useCallback } from "react";
 import RepeatIcon from "@mui/icons-material/Repeat";
 import RepeatOneIcon from "@mui/icons-material/RepeatOne";
 import PauseIcon from "@mui/icons-material/Pause";
@@ -18,7 +18,7 @@ import {
 } from "../../store/musicPlayerReducer";
 
 // 재생모드 컴포넌트
-const RepeatButton = ({ repeat, ...props }) => {
+const RepeatButton = memo(({ repeat, ...props }) => {
   switch (repeat) {
     case "ALL": // 재생모드 전체반복일때
       return <RepeatIcon sx={{ fontSize: 30, cursor: "pointer" }} {...props} />;
@@ -33,7 +33,7 @@ const RepeatButton = ({ repeat, ...props }) => {
     default:
       return null;
   }
-};
+});
 
 const Controls = ({
   showPlayList,
@@ -46,16 +46,19 @@ const Controls = ({
   const playing = useSelector((state) => state.playing);
   const repeat = useSelector((state) => state.repeat);
   const dispatch = useDispatch();
-  const onClickPlay = () => {
+  const onClickPlay = useCallback(() => {
     play();
-  };
-  const onClickPause = () => {
+  }, [play]);
+  const onClickPause = useCallback(() => {
     pause();
-  };
+  }, [pause]);
 
-  const onChangeVolume = (event) => {
-    changeVolume(event.target.value);
-  };
+  const onChangeVolume = useCallback(
+    (event) => {
+      changeVolume(event.target.value);
+    },
+    [changeVolume]
+  );
   const onClickPrevious = () => {
     dispatch(prevMusic());
   };
@@ -120,4 +123,4 @@ const Controls = ({
   );
 };
 
-export default Controls;
+export default memo(Controls);
