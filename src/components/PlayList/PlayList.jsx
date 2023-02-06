@@ -15,7 +15,7 @@ const PlayList = ({ showPlayList, setshowPlayList }) => {
   const playList = useSelector((state) => state.playList);
   const dispatch = useDispatch();
   const onClickClose = () => {
-    setshowPlayList(false);
+    setshowPlayList(false); // close 버튼 클릭시 setshowPlayList false로 초기화 (곡 리스트 닫힘)
   };
 
   const onClickItem = (index) => {

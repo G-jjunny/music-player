@@ -101,6 +101,7 @@ const initialState = {
   repeat: "ALL", //ONE SHUFFLE
 };
 
+// action 생성
 const repeatMode = ["ONE", "ALL", "SHUFFLE"];
 const PLAY_MUSIC = "musicPlayer/PLAY_MUSIC";
 const STOP_MUSIC = "musicPlayer/STOP_MUSIC";
@@ -110,6 +111,7 @@ const SET_REPEAT = "musicPlayer/SET_REPEAT";
 const SET_CURRENT_INDEX = "musicPlayer/SET_CURRENT_INDEX";
 const UPDATE_PLAY_LIST = "musicPlayer/UPDATE_PLAY_LIST";
 
+// action function
 export const playMusic = () => ({ type: PLAY_MUSIC });
 export const stopMusic = () => ({ type: STOP_MUSIC });
 export const nextMusic = () => ({ type: NEXT_MUSIC });
@@ -123,7 +125,8 @@ export const updatePlayList = (newPlayList) => ({
 
 // 플레이 방식이 랜덤일때 randomNum
 const getRandomNum = (arr, excludeNum) => {
-  const randomNum = Math.floor(Math.random() * arr.length);
+  // 난수생성
+  const randomNum = Math.floor(Math.random() * arr.length); //배열의 길이만큼
   return arr[randomNum] === excludeNum
     ? getRandomNum(arr, excludeNum)
     : arr[randomNum];

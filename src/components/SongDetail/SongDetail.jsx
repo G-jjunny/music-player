@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import "./SongDetail.scss";
 import { useSelector } from "react-redux";
 function SongDetail() {
+  // useSelector를 이용하여 playing, playList, currentIndex를 불러온다.
   const playing = useSelector((state) => state.playing);
   const playList = useSelector((state) => state.playList);
   const currentIndex = useSelector((state) => state.currentIndex);
