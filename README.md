@@ -12,7 +12,7 @@
 
 ### controls
 
-![](./Md/Music-Player_Controls.gif)
+![](./Md/Music-Player-Controls.gif)
 
 > 죄측부터 플레이리스트, 재생모드, 이전곡, 재생 및 일시정지, 다음곡, 볼륨조절
 > 재생모드는 전체재생, 한 곡 반복, 랜덤 재생이 있다.
