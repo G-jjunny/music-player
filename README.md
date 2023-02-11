@@ -4,7 +4,8 @@
 
 ![](./Md/musicplayer_main.png)
 
-> redux를 이용한 musicPlayer프로젝트 입니다.  
+> musicPlayer프로젝트 입니다.  
+> Redux를 사용하여 음원 관련 스토어를 생성하여 프로젝트를 제작하였스며  
 > 프로젝트에 사용된 이미지와 음원은 pixabay의 무료 이미지와 음원을 사용했습니다.  
 > store/data에 등록되어있는 데이터에서 name, artist, img, src, id를 받아 해당 곡의 배경 및 정보를 보여주고 플레이 리스트 수정 및 재생을 할 수 있는 기능을 구현했다.
 
